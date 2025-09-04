@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Product Pricing </title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <style>
+    /* Reset + box sizing */
+    * { box-sizing: border-box; }
+    html,body { height:100%; margin:0; padding:0; font-family: Arial, Helvetica, sans-serif; background:#f4f6f8; }
+
+    /* Page center */
+    .page {
+      padding: 20px;
+      display: flex;
+      justify-content: center;
+    }
+
+    /* Card container */
+    .container {
+      width: 100%;
+      max-width: 1100px;
+      background: #fff;
+      border-radius: 12px;
+      padding: 18px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+    }
+
+    h2 { text-align: center; margin: 6px 0 18px; }
+
+    /* Responsive form: use auto-fit so inputs wrap naturally */
+    form {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 10px;
+      align-items: center;
+    }
+
+    form input, form button {
+      padding: 8px 10px;
+      border: 1px solid #dcdcdc;
+      border-radius: 6px;
+      font-size: 14px;
+    }
+
+    /* Save button spans full width */
+    form button {
+      grid-column: 1 / -1;
+      background: #007bff;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    form button:hover { background: #0056b3; }
+
+    /* Table wrapper handles horizontal scrolling */
+    .table-wrapper {
+      margin-top: 14px;
+      width: 100%;
+      overflow-x: auto;                 /* allows horizontal scroll */
+      -webkit-overflow-scrolling: touch;
+      border-radius: 8px;
+      border: 1px solid #eee;
+    }
+
+    /* Table: set a reasonable min-width so columns don't squish on large screen */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 920px; /* adjust if you add/remove columns */
+    }
+
+    thead th {
+      position: sticky;
+      top: 0;
+      background: #f8fafc;
+      z-index: 3;
+      text-align: left;
+      padding: 10px;
+      border-bottom: 1px solid #e6e6e6;
+    }
+
+    tbody td {
+      padding: 10px;
+      border-bottom: 1px solid #f0f0f0;
+      vertical-align: middle;
+      text-align: left;
+    }
+
+    /* Right-align numeric columns */
+    .numeric { text-align: right; white-space: nowrap; }
+
+    /* Actions column - keep buttons tidy */
+    .actions { display:flex; gap:6px; justify-content:flex-end; }
+    .action {
+      padding: 6px 8px;
+      border-radius:6px;
+      border: none;
+      cursor: pointer;
+      font-size: 13px;
+    }
+    .edit { background:#ffc107; color:#111; }
+    .delete { background:#dc3545; color:#fff; }
+
+    /* Export button */
+    #exportBtn {
+      margin-top: 12px;
+      background: #28a745;
+      color: white;
+      border: none;
+      padding: 8px 12px;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    #exportBtn:hover { background: #218838; }
+
+    /* Smaller screens: tighten spacing */
+    @media (max-width: 600px) {
+      .container { padding: 12px; border-radius: 10px; }
+      form { gap: 8px; }
+      table { min-width: 800px; }
+      thead th, tbody td { padding: 8px; font-size: 13px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="container">
+      <h2>Product Pricing</h2>
+
+      <form id="productForm">
+        <input type="text" id="productName" placeholder="Product Name" required />
+        <input type="number" id="buyingCost" placeholder="Buying Cost" required min="0" />
+        <input type="number" id="packagingCost" placeholder="Packaging Cost" required min="0" />
+        <input type="number" id="deliveryCost" placeholder="Delivery Cost" required min="0" />
+        <input type="number" id="otherCosts" placeholder="Other Costs" required min="0" />
+        <input type="number" id="profitMargin" placeholder="Profit Margin (%)" required min="0" />
+        <button type="submit">Save Product</button>
+      </form>
+
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th class="numeric">Buying</th>
+              <th class="numeric">Packaging</th>
+              <th class="numeric">Delivery</th>
+              <th class="numeric">Other</th>
+              <th class="numeric">Margin %</th>
+              <th class="numeric">Total Cost</th>
+              <th class="numeric">Profit</th>
+              <th class="numeric">Selling Price</th>
+              <th style="min-width:120px">Actions</th>
+            </tr>
+          </thead>
+          <tbody id="productsBody"></tbody>
+        </table>
+      </div>
+
+      <button id="exportBtn" onclick="exportCSV()">Export to CSV</button>
+    </div>
+  </div>
+
+  <script src="script.js">
+    
+  </script>
+</body>
+</html>
