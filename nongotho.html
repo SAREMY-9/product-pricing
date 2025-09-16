@@ -152,55 +152,57 @@
     }
 
     @media (max-width:520px) {
-    .btn { padding: .45rem .7rem; border-radius:8px; font-size: .95rem; }
-  }
+   
+      .btn { padding: .45rem .7rem; border-radius:8px; font-size: .95rem; }
+
+    }
   </style>
 </head>
 <body>
-  <div class="page">
-    <div class="container">
-         
-   
-      <a href="nongotho.html" class="btn btn-primary" aria-label="Open Sales manager"> 
+    <div class="page">
+      <div class="container">
+
+         <a href="nongotho.html" class="btn btn-primary" aria-label="Open Sales manager"> 
        
         <svg class="btn-icon" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false">
           <path d="M10 2h4a2 2 0 0 1 2 2v2h3v13a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6h3V4a2 2 0 0 1 2-2h2zM9 6h6V4h-6v2z" fill="currentColor"/>
         </svg>
-        <span>My Sales</span>
+        <span>Product Pricer</span>
 
       </a>
 
-      <h2>Product Pricing</h2>
+        <h2>Sales Manager</h2>
 
-      <form id="productForm">
-        <input type="text" id="productName" placeholder="Product Name" required />
-        <input type="number" id="buyingCost" placeholder="Buying Cost" required min="0" />
-        <input type="number" id="packagingCost" placeholder="Packaging Cost" required min="0" />
-        <input type="number" id="deliveryCost" placeholder="Delivery Cost" required min="0" />
-        <input type="number" id="otherCosts" placeholder="Other Costs" required min="0" />
-        <input type="number" id="profitMargin" placeholder="Profit Margin (%)" required min="0" />
-        <button type="submit">Save Product</button>
-      </form>
+
+        <form id="productForm">
+    <input type="text" id="customerName" placeholder="Customer" required />
+    <input type="text" id="productName" placeholder="Product Name" required />
+    <input type="number" id="amount" placeholder="Amount" required min="0" />
+    <input type="date" id="date" required />
+  
+    <button type="submit">Save</button>
+</form>
+
+
 
       <div class="table-wrapper">
         <table>
           <thead>
             <tr>
-              <th>Name</th>
-              <th class="numeric">Buying</th>
-              <th class="numeric">Packaging</th>
-              <th class="numeric">Delivery</th>
-              <th class="numeric">Other</th>
-              <th class="numeric">Margin %</th>
-              <th class="numeric">Total Cost</th>
-              <th class="numeric">Profit</th>
-              <th class="numeric">Selling Price</th>
+              <th>Customer</th>
+              <th class="numeric">Product Name</th>
+              <th class="numeric">Amount</th>
+              <th class="numeric">Total Days Due</th>  
+              <th class="numeric">Status</th>
+              <th class="numeric">Date </th>
               <th style="min-width:120px">Actions</th>
             </tr>
           </thead>
           <tbody id="productsBody"></tbody>
         </table>
       </div>
+
+      <div id="totalsBox" class="totals"></div>
 
       <button id="exportBtn" onclick="exportCSV()">Export to CSV</button>
     </div>
